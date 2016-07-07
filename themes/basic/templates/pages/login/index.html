@@ -1,0 +1,21 @@
+{% extends "layouts/default.html" %}
+
+{% block content %}
+<section>
+    <h1>{{entry.title}}</h1>
+    
+			<ul>
+			<li><b>Title:</b> {{entry.title}}</li>
+			<li><b>URL:</b> {{entry.url}}</li>
+			<li><b>Content:</b> {{entry.content}}</li>
+			<li><b>CTA</b>:<br>
+				<ul>
+				<li><b>Title:</b> {{entry.cta.title}}</li>
+				<li><b>link:</b> {{entry.cta.link}}</li>
+				<li><b>Open in New Tab:</b> {{entry.cta.open_in_new_tab}}</li>
+				</ul>
+			</li>
+			</ul>
+    <p style="color: #555; font-size: 14px">Note: Template automatically generated at "C:\xampp\htdocs\contentstack-business-theme\themes\basic\templates\pages\login\index.html"</p>
+</section>
+{% endblock %}

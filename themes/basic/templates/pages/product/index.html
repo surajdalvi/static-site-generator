@@ -1,0 +1,116 @@
+{% extends "layouts/default.html" %} {% include "partials/header.html" %} {% block content %}
+<script type="text/javascript">
+window.product = {{entry | json}};
+</script>
+<section>
+    <div class="product-hero-bg hero-bg" style="background-image: url({{getAssetUrl(entry.banner[0].banner_img)}});">
+        <div class="aligned-container typed-container text-center">
+            <div class="container">
+                <div class="typing-block">
+                    {{entry.banner[0].description}}
+                </div>
+                <a href="/" class="btn btn-primary mrm">{{entry.banner[0].cta.link}}</a>
+            </div>
+        </div>
+    </div>
+    <div class="main-container">
+        <section class="margin-top-max">
+            <div class="container">
+                <div class="text-center">
+                    {{entry.right_sources.content}}
+                </div>
+                <div class="row">
+                {% for content in entry.right_sources.right_sources_content %}
+                    <div class="col-md-4 col-xs-12 text-center icon-wrap">
+                        <h4> <strong>{{content.title}}</strong></h4>
+                        {{content.description}}
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+            <div class="row border-bottom">
+                <div class="container feedback-wrap">
+                    <img class="img-responsive" src="{{getAssetUrl(entry.right_sources.image)}}" alt="">
+                </div>
+            </div>
+        </section>
+        <section class="margin-top-max margin-bottom-max">
+            <div class="container">
+              <div class="text-center">
+                {{entry.real_data.content}}
+              </div>
+                <div class="row">
+                <div class="col-md-6 text-left padding-right-max">
+                {% for content in entry.real_data.real_data_content %}
+                <h4><strong>{{content.title}}</strong></h4>
+                <p class="mbl">{{content.description}}</p>
+                {% endfor %}
+                </div>
+                    <div class="col-md-6">
+                        <img class="img-responsive" src="{{getAssetUrl(entry.real_data.image)}}" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="action-wrap">
+            <div class="container text-center">
+                <h2 class="mbm">{{entry.see_it_in_action.content}}</h2>
+                <a href="" class="btn btn-primary">{{entry.see_it_in_action.cta.tilte}}</a>
+            </div>
+        </div>
+        <section class="margin-top-max margin-bottom-max border-bottom">
+            <div class="container">
+            <div class="text-center">
+                {{entry.process_communication.head_content}}
+            <div class="text-center">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img class="img-responsive" src="{{getAssetUrl(entry.process_communication.image)}}" alt="">
+                    </div>
+                <div class="col-md-6 text-left padding-left-max">
+                {% for content in entry.process_communication.process_content %}
+                <h4><strong>{{content.title}}</strong></h4>
+                <p class="mbl">{{content.description}}</p>
+                {% endfor %}
+                </div>
+                    {{entry.process_communication.description}}
+                </div>
+            </div>
+        </section>
+        <section class="pricing  margin-bottom-max">
+            <div class="container text-center">
+                {{entry.products.content}}
+                <div class="margin-top-max"> <a href="" class="btn btn-primary">{{entry.products.cta.title}}</a></div>
+                <div class="row">
+                    {% for feature in entry.products.plans %}
+                    <div class="col-md-4 col-sm-4">
+                        <div class="prices price-1">
+                            <div class="price-inner">
+                                <h3>{{feature.title}}</h3>
+                                {% if loop.index == loop.length %}
+                                <div class="contact-wrap">
+                                <img class="img-responsive" src="{{getAssetUrl(feature.image)}}" alt="">
+                                <div class="title mll">{{feature.amount}}</div>
+                                {% else %}
+                                 <div class="cost-line">
+                                 {{feature.amount}}
+                                 {% endif %}
+                                    </div>
+                                    <p>{{feature.label}}</p>
+                                </div>
+                                <div class="features">
+                                {{feature.features}}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+        </section>
+        <div class="stay-tune-wrap">
+            <div class="container text-center">
+                <a href="" class="btn btn-tertiary">{{entry.try_now.cta.title}}</a> {{entry.try_now.content}}
+            </div>
+        </div>
+</section>
+{% endblock %} {% include "partials/footer.html" %}
